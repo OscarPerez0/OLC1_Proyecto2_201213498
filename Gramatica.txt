@@ -1,0 +1,160 @@
+
+S -> INI
+
+INI -> CLASE INIR
+
+INIR -> INI | 3
+
+CLASE -> public T_CLASS id { L_CUERPO_CLASE }
+
+L_CUERPO_CLASE -> CUERPO_CLASE L_CUERPO_CLASER
+
+L_CUERPO_CLASER -> L_CUERPO_CLASE | 3
+
+CUERPO_CLASE -> METODO | DECLARACION
+
+//*********************METODO**************************
+
+METODO -> public ST TIPO NAME ( PARAMETROS ) OP_METODO
+
+ST -> static | 3
+
+NAME -> id | main
+
+PARAMETROS -> PARAMETRO PARAMETROSR | 3
+
+PARAMETROSR -> , PARAMETROS | 3
+
+PARAMETRO -> TIPO id
+
+OP_METODO -> ; | { INSTRUCCIONES }
+
+//******************DECLARACION************************
+
+DECLARACION -> TIPO L_ID ;
+
+L_ID -> id ASIG L_IDR
+
+L_IDR -> , L_ID | 3
+
+ASIG -> = EXPRESION | 3
+
+
+//***********************INSTRUCCIONES********************
+
+INSTRUCCIONES -> INSTRUCCION INSTRUCCIONESR
+
+INSTRUCCIONESR -> INSTRUCCIONES | 3
+
+INSTRUCCION -> 
+	  continue ;
+	| break ;
+	| return REXP ;
+	| LLAMADA_ASIG ;
+	| DECLARACION
+	| PRINT ;
+	| FOR 
+	| WHILE 
+	| DO
+	| IF
+
+//***********************RETURN*********************
+REXP -> EXPRESION | 3
+
+//*********************PRINT**************************
+
+PRINT -> system . out . TPRINT ( EXPRESION )
+
+
+TPRINT-> println | print
+
+//******************ASIGNACION / LLAMADA******************
+
+LLAMADA_ASIG -> id OP_ASIG_LLAM ;
+
+OP_ASIG_LLAM -> = EXPRESION | EXPRESION
+
+l_arg -> EXPRESION l_argr
+
+l_argr -> , l_arg | 3
+
+
+//*************************FOR*************************
+FOR -> for ( FOR_DECLARACION EXPRESION ; INCREMENTO  ) { INSTRUCCIONES }
+
+FOR_DECLARACION -> DECLARACION 
+		| id = EXPRESION ;
+
+INCREMENTO -> EXPRESION INC
+
+INC ->  =  EXPRESION | 3
+
+
+//*************************WHILE**********************
+WHILE -> while ( EXPRESION ) { INSTRUCCIONES }
+
+
+//************************DO****************************
+DO -> do { INSTRUCCIONES } while ( EXPRESION ) ;
+
+//***********************IF****************************
+IF -> if ( EXPRESION ) { INSTRUCCIONES } IF_OP
+
+IF_OP -> else ELSE
+	| 3
+
+ELSE -> { INSTRUCCIONES } | IF
+
+//************************EXPRESION***********************
+
+EXPRESION-> TEXP EXP
+
+EXP -> or TEXP EXP
+	| xor TEXP EXP
+	| 3
+	
+TEXP -> FEXP TEXPP
+
+
+TEXPP -> and FEXP TEXPP
+	| 3
+	
+FEXP -> ER
+	| not ER
+
+ER-> E ERP
+
+ERP-> S_REL E | 3
+
+S_REL-> > | < | >= | <= | == | != 
+
+E -> T EP
+
+EP ->   + T EP 
+      | - T EP
+      | 3
+
+T -> F TP
+	
+TP->  * F TP
+    | / F TP
+    | 3
+
+F-> ( EXPRESION ) | - F | id E_OP | cadena | entero | decimal | char  
+
+E_OP-> ++ | -- | ( l_arg ) | 3
+
+//************************OTROS***************************
+
+T_CLASS -> class | interface
+
+TIPO -> int | double | string | char | boolean | void
+
+
+
+
+
+
+
+
+

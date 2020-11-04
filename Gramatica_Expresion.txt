@@ -1,0 +1,42 @@
+EXPRESION-> TEXP EXP
+
+EXP -> or TEXP EXP
+	| xor TEXP EXP
+	| 3
+	
+TEXP -> FEXP TEXPP
+
+
+TEXPP -> and FEXP TEXPP
+	| 3
+	
+	
+FEXP -> ER
+	| not ER
+	
+
+
+ER -> E ERP
+
+ERP -> S_REL E
+	| 3
+	
+S_REL -> <
+	| >
+	| >=
+	| <=
+	
+E -> T EP
+
+EP -> + T EP
+	| - T EP
+	| 3
+	
+T -> F TP
+
+TP -> * F TP
+	| / F TP
+	| 3
+	
+F -> ( EXPRESION ) | - E | id | num | cadena
+
