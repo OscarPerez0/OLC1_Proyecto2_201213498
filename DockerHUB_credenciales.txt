@@ -1,0 +1,4 @@
+Credenciales DOCKERHUB
+
+usuario: perezoscar
+password: DvaSPsHyz7MRJZK
