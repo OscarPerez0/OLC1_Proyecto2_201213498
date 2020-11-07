@@ -15,11 +15,10 @@ CUERPO_CLASE -> METODO | DECLARACION
 
 //*********************METODO**************************
 
-METODO -> public ST TIPO NAME ( PARAMETROS ) OP_METODO
+METODO -> public TPM
 
-ST -> static | 3
-
-NAME -> id | main
+TPM -> static void main(string id[]) { INSTRUCCIONES } 
+	|  TIPO_M id ( PARAMETROS ) OP_METODO
 
 PARAMETROS -> PARAMETRO PARAMETROSR | 3
 
@@ -28,6 +27,8 @@ PARAMETROSR -> , PARAMETROS | 3
 PARAMETRO -> TIPO id
 
 OP_METODO -> ; | { INSTRUCCIONES }
+
+TIPO_M -> TIPO | 3
 
 //******************DECLARACION************************
 
@@ -70,9 +71,11 @@ TPRINT-> println | print
 
 //******************ASIGNACION / LLAMADA******************
 
-LLAMADA_ASIG -> id OP_ASIG_LLAM ;
+LLAMADA_ASIG -> id OP_ASIG_LLAM
 
-OP_ASIG_LLAM -> = EXPRESION | EXPRESION
+OP_ASIG_LLAM -> = EXPRESION | ( ARG )
+
+ARG -> L_ARG | 3
 
 l_arg -> EXPRESION l_argr
 
@@ -142,7 +145,7 @@ TP->  * F TP
 
 F-> ( EXPRESION ) | - F | id E_OP | cadena | entero | decimal | char  
 
-E_OP-> ++ | -- | ( l_arg ) | 3
+E_OP-> ++ | -- | ( ARG ) | 3
 
 //************************OTROS***************************
 
