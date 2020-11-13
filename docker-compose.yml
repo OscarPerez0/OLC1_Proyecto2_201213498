@@ -22,7 +22,7 @@ services:
       - backend2
   backend1:
     container_name: js_server
-    image: nodeweb:v1
+    image: nodeweb:v2
     ports:
       - "3000:3000"
     environment:
@@ -36,7 +36,7 @@ services:
             ipv4_address: 182.18.7.7
   backend2:
     container_name: py_sever
-    image: nodeweb:v1
+    image: nodeweb:v2
     ports:
       - "4000:4000"
     environment:
